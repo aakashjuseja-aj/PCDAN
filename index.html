@@ -1,0 +1,231 @@
+
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+      
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>PCDAN-</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<!--     <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
+  <!-- <link rel="icon" type="image/png" href="img/seal_icon.png"> -->
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+    
+    <script src="js/app.js"></script>
+
+    <style>
+        .video-container {
+            text-align: center;
+        }
+        .video-container iframe {
+            margin: 0 10px; /* Adjust the margin value as needed */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="main">
+        <div class="row">
+            <h2 class="col-md-12 text-center">
+                PC-DAN: Point Cloud based Deep Affinity Network for </br> 3D Multi-Object Tracking  </br> 
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="list-inline">
+                    <li>
+                        <a href="">
+                          Aakash Kumar
+                        </a>
+                        </br>University of Central Florida
+                    </li><br> <br>
+                    <li>
+                        <a href="">
+                            Jyoti Kini
+                        </a>
+                        </br>University of Central Florida
+                    </li>
+                    <li>
+                        <a href="">
+                         Ajmal Mian
+                        </a>
+                        </br>University of Western Australia
+                    </li>
+                    <li>
+                        <a href="">
+                          Mubarak Shah
+                        </a>
+                        </br>Univerity of Central Florida
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="row">
+                <div class="col-md-4 col-md-offset-4 text-center">
+                    <ul class="nav nav-pills nav-justified">
+                        <li>
+                            <a href="https://arxiv.org/abs/2106.07552">
+                            <image src="img/mip_paper_image.jpg" height="60px">
+                                <h4><strong>Paper</strong></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/embed/2v7vlsY2RM8?si=P8LXOH8uWD8_s8B3">
+                            <image src="img/youtube_icon.png" height="60px">
+                                <h4><strong>Video</strong></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                            <image src="img/github.png" height="60px">
+                                <h4><strong>Code</strong></h4>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Abstract
+                </h3>
+                <!--<image src="img/architecture_iros2024.png" class="img-responsive" alt="overview"><br>-->
+                <p class="text-justify">
+                    In recent times, the scope of LIDAR (Light Detection and Ranging) sensor-based technology has spread across numerous fields. It is popularly used to map terrain and navigation information into reliable 3D point cloud data, potentially revolutionizing the autonomous vehicles and assistive robotic industry. A point cloud is a dense compilation of spatial data in 3D coordinates. It plays a vital role in modeling complex real-world scenes since it preserves structural information and avoids perspective distortion, unlike image data, which is the projection of a 3D structure on a 2D plane. In order to leverage the intrinsic capabilities of the LIDAR data, we propose a PointNet-based approach for 3D Multi- Object Tracking (MOT).
+                </p>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Video
+                </h3>
+                <div class="text-center">
+                    <div style="position:relative;padding-top:56.25%;">
+                        <iframe src="https://www.youtube.com/embed/2v7vlsY2RM8?si=P8LXOH8uWD8_s8B3" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Proposed Network Architecture
+                </h3>
+                <p class="text-justify">
+                    Our solution consists of a PointNet feature extractor, a component for exhaustive pairing permutation of features, and a compression network. Initially, we crop objects from the point cloud using 3D detections and pass these through PointNet to generate the features for each object. Exhaustive permutations of these feature vectors \( F_t \) and \( F_{t-n} \) are encoded in a tensor \( \in \mathbb{R}^{N_m \times N_m \times 1024} \), where \( N_m \) is the number of objects in each frame. For our experiments, we set \( N_m \) to 100 objects. Next, a compression network consisting of 5 convolution layers is used to map the encodings to \( M \in \mathbb{R}^{N_m \times N_m} \). The resultant matrix \( M \) is augmented to \( M_1 \) and \( M_2 \) matrices by appending an extra column and row respectively to account for the objects entering and leaving the scene. Thereafter, row-wise and column-wise softmax operations are performed to generate corresponding \( A_1 \) and \( A_2 \) matrices. These matrices, along with their column and row trimmed versions \( \hat{A}_1 \) and \( \hat{A}_2 \) respectively, are used for the loss computation. \( A_1 \) and \( A_2 \) matrices are used to predict the affinity between a pair of frames.</p>
+                </p>
+                <p style="text-align:center;">
+                    <image src="img/PCDAN_architecture.png" height="50px" class="img-responsive">
+                </p>
+                <h3>
+                    Qualitative Results
+                </h3>
+                <p class="video-container">
+                    <iframe width="350" height="520" src="https://youtube.com/embed/_LuOGqmoWdA?si=rfZclcWkJovdQshH" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="350" height="520" src="https://youtube.com/embed/GwtunFZcGDM?si=YWvUXaE7wMVS1cNw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </p>
+
+                <h3>
+                    Quantitative Results
+                 </h3>
+                 <p class="text-justify">
+                    Quantitave Results on Kitt Dataset
+                <p style="text-align:center;">
+                     <image src="img/Quantitative_results_on_Kitti.png" class="img-responsive" alt="scales" style="display: block; margin: auto; width: 600px;">
+                 </p>
+                 <p class="text-justify">
+                    Quantitivate Result on JackRabbot Dataset
+                <p style="text-align:center;">
+                     <image src="img/Quantitative_results_JRDB.png" class="img-responsive" alt="scales" style="display: block; margin: auto; width: 360px;">
+                 </p>
+
+
+                <!---
+                <video id="v0" width="100%" autoplay loop muted>
+                  <source src="img/pe_anim_horiz.mp4" type="video/mp4" />
+                </video>
+                <p class="text-justify">
+                    Here, we show how these feature vectors change as a function of a point moving in 1D space.
+                    <br><br>
+                    Our <em>integrated positional encoding</em> considers Gaussian <em>regions</em> of space, rather than infinitesimal points. This provides a natural way to input a "region" of space as query to a coordinate-based neural network, allowing the network to reason about sampling and aliasing. The expected value of each positional encoding component has a simple closed form:
+                </p>
+                <p style="text-align:center;">
+                    <image src="img/ipe_eqn_under_pad.png" height="30px" class="img-responsive">
+                </p>
+                <video id="v0" width="100%" autoplay loop muted>
+                  <source src="img/ipe_anim_horiz.mp4" type="video/mp4" />
+                </video>
+                <p class="text-justify">
+                    We can see that when considering a wider region, the higher frequency features automatically shrink toward zero, providing the network with lower-frequency inputs. As the region narrows, these features converge to the original positional encoding.
+                </p>
+            -->
+            </div>
+        </div>
+            
+                    
+            
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Citation
+                </h3>
+                <div class="form-group col-md-10 col-md-offset-1">
+                    <textarea id="bibtex" class="form-control" readonly>
+@article{SparceToDence,
+    title={Self Supervised Learning for Multiple Object Tracking\\ in 3D Point Clouds},
+    author={Aakash Kumar and Jyoti Kini and 
+            Ajmal Mian and Mubarak Shah},
+    journal={},
+    year={}
+}</textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Acknowledgements
+                </h3>
+                <p class="text-justify">
+                    The website template was borrowed from <a href="http://mgharbi.com/">Michaël Gharbi</a> and <a href="https://github.com/taoyang1122/taoyang1122.github.io">Taoyang</a>.
+                    </p>
+                    <p class="text-justify">
+                   </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
